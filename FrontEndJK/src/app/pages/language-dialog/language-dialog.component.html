@@ -1,0 +1,20 @@
+<h3 mat-dialog-title>{{ data.id ? 'Editar Lenguaje' : 'Nuevo Lenguaje' }}</h3>
+
+<div mat-dialog-content>
+  <!-- Campo para Código -->
+  <mat-form-field style="width: 100%;">
+    <mat-label>Código</mat-label>
+    <input matInput [(ngModel)]="data.code" required>
+  </mat-form-field>
+
+  <!-- Campo para Lenguaje -->
+  <mat-form-field style="width: 100%;">
+    <mat-label>Lenguaje</mat-label>
+    <input matInput [(ngModel)]="data.language" required>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

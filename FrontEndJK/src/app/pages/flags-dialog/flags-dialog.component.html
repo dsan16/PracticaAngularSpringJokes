@@ -1,0 +1,11 @@
+<h3 mat-dialog-title>{{ data.id ? 'Editar Flag' : 'Nueva Flag' }}</h3>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Nombre de la Flag</mat-label>
+    <input matInput [(ngModel)]="data.flag" required="">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

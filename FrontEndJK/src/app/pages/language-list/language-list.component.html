@@ -1,0 +1,49 @@
+<div class="language-container">
+    <button mat-raised-button color="accent" (click)="goBack()">
+        Atrás
+      </button>
+
+    <h1>Lista de Lenguajes</h1>
+  
+    <div class="search-add-container">
+      <input type="text" placeholder="Buscar lenguaje..." [(ngModel)]="searchText" (input)="applyFilter()" class="search-input"/>
+      <button mat-raised-button color="primary" (click)="addLanguage()">+ Agregar Lenguaje</button>
+    </div>
+  
+    <table mat-table [dataSource]="languagesDataSource" class="mat-elevation-z8">
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let language">{{ language.id }}</td>
+      </ng-container>
+  
+      <!-- Código -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>Código</th>
+        <td mat-cell *matCellDef="let language">{{ language.code }}</td>
+      </ng-container>
+  
+      <!-- Lenguaje -->
+      <ng-container matColumnDef="language">
+        <th mat-header-cell *matHeaderCellDef>Lenguaje</th>
+        <td mat-cell *matCellDef="let language">{{ language.language }}</td>
+      </ng-container>
+  
+      <!-- ACCIONES -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let language">
+          <button mat-icon-button color="primary" (click)="editLanguage(language)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteLanguage(language.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

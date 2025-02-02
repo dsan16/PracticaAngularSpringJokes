@@ -1,0 +1,14 @@
+<h3 mat-dialog-title>{{ data.id ? 'Editar Categoría' : 'Nueva Categoría' }}</h3>
+
+<div mat-dialog-content>
+  <!-- Campo para Categoría -->
+  <mat-form-field style="width: 100%;">
+    <mat-label>Nombre de la Categoría</mat-label>
+    <input matInput [(ngModel)]="data.category">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

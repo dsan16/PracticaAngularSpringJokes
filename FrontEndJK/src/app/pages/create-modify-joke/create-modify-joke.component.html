@@ -1,0 +1,90 @@
+<div class="form-container">
+  <button mat-raised-button color="accent" (click)="goBack()">
+    Atrás
+  </button>
+
+  <!-- Según si estamos editando o creando -->
+  <h2 *ngIf="!isEditMode">Agregar Nuevo Chiste</h2>
+  <h2 *ngIf="isEditMode">Editar Chiste (ID: {{ joke.id }})</h2>
+
+  <form (ngSubmit)="submitForm($event)" novalidate>
+    <!-- CATEGORÍA -->
+    <div class="form-group">
+      <label for="category">Categoría:</label>
+      <select id="category"
+              [(ngModel)]="joke.categories"
+              name="category"
+              required
+              [compareWith]="compareCategories">
+        <option *ngFor="let category of categoriesList" [ngValue]="category">
+          {{ category.category }}
+        </option>
+      </select>
+    </div>
+
+    <!-- IDIOMA -->
+    <div class="form-group">
+      <label for="language">Idioma:</label>
+      <select id="language"
+              [(ngModel)]="joke.language"
+              name="language"
+              required
+              [compareWith]="compareLanguages">
+        <option *ngFor="let lang of languagesList" [ngValue]="lang">
+          {{ lang.language }}
+        </option>
+      </select>
+    </div>
+
+    <!-- TIPO -->
+    <div class="form-group">
+      <label for="type">Tipo:</label>
+      <select id="type"
+              [(ngModel)]="joke.types"
+              name="type"
+              required
+              [compareWith]="compareTypes">
+        <option *ngFor="let type of typesList" [ngValue]="type">
+          {{ type.type }}
+        </option>
+      </select>
+    </div>
+
+    <!-- TEXTO 1 -->
+    <div class="form-group">
+      <label for="text1">Texto 1:</label>
+      <input type="text"
+             id="text1"
+             [(ngModel)]="joke.text1"
+             name="text1"
+             required />
+    </div>
+
+    <!-- TEXTO 2 -->
+    <div class="form-group">
+      <label for="text2">Texto 2 (Opcional):</label>
+      <input type="text"
+             id="text2"
+             [(ngModel)]="joke.text2"
+             name="text2" />
+    </div>
+
+    <!-- FLAGS (CHECKBOXES) -->
+    <div class="form-group">
+      <label>Flags:</label>
+      <div class="checkbox-container">
+        <div *ngFor="let flag of flagsList" class="checkbox-item">
+          <input type="checkbox"
+                 [checked]="isFlagSelected(flag)"
+                 (change)="onFlagChange(flag, $event)" />
+          {{ flag.flag }}
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTÓN DE ENVÍO -->
+    <button type="submit" class="btn-submit">
+      {{ isEditMode ? 'Actualizar Chiste' : 'Guardar Chiste' }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,109 @@
+/* Contenedor principal del formulario */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del título */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Botón de regresar */
+  button[mat-raised-button] {
+    margin-bottom: 15px;
+  }
+  
+  /* Grupos de formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Inputs y selects */
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #3f51b5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
+  }
+  
+  /* Estilos para la lista de teléfonos */
+  .phone-container {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .phone-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .phone-item input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  button[mat-icon-button] {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[mat-icon-button] mat-icon {
+    color: #d32f2f;
+    font-size: 20px;
+  }
+  
+  /* Botón de agregar teléfono */
+  button[type="button"] {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    background: #3f51b5;
+    color: white;
+  }
+  
+  button[type="button"]:hover {
+    background: #303f9f;
+  }
+  
+  /* Botón de envío */
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background: #218838;
+  }
+  

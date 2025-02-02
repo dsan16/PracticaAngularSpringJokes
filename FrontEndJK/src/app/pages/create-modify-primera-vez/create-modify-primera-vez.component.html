@@ -1,0 +1,68 @@
+<div class="form-container">
+    <button mat-raised-button color="accent" (click)="goBack()">
+      Atrás
+    </button>
+  
+    <!-- Según si estamos editando o creando -->
+    <h2 *ngIf="!isEditMode">Agregar Nueva Primera Vez</h2>
+    <h2 *ngIf="isEditMode">Editar Primera Vez (ID: {{ primeraVez.id }})</h2>
+  
+    <form (ngSubmit)="submitForm($event)" novalidate>
+  
+      <!-- NOMBRE DEL PROGRAMA -->
+      <div class="form-group">
+        <label for="programa">Nombre del Programa:</label>
+        <input type="text"
+               id="programa"
+               [(ngModel)]="primeraVez.programa"
+               name="programa"
+               required />
+      </div>
+  
+      <!-- FECHA DE EMISIÓN -->
+      <div class="form-group">
+        <label for="fechaEmision">Fecha de Emisión:</label>
+        <input type="date"
+               id="fechaEmision"
+               [(ngModel)]="primeraVez.fechaEmision"
+               name="fechaEmision"
+               required />
+      </div>
+  
+      <!-- CHISTE ASOCIADO -->
+      <div class="form-group">
+        <label for="joke">Chiste Asociado (ID):</label>
+        <select id="joke"
+                [(ngModel)]="primeraVez.joke"
+                name="joke"
+                required>
+          <option *ngFor="let joke of jokesList" [ngValue]="joke">
+            {{ joke.id }} - {{ joke.text1 }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- LISTA DE TELÉFONOS -->
+      <div class="form-group">
+        <label>Teléfonos:</label>
+        <div class="phone-container">
+          <div *ngFor="let tel of primeraVez.telefonos; let i = index" class="phone-item">
+            <input type="text"
+                   [(ngModel)]="primeraVez.telefonos[i].numero"
+                   name="telefono{{i}}"
+                   required />
+            <button mat-icon-button color="warn" (click)="removeTelefono(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="addTelefono()" type="button">+ Agregar Teléfono</button>
+      </div>
+  
+      <!-- BOTÓN DE ENVÍO -->
+      <button type="submit" class="btn-submit">
+        {{ isEditMode ? 'Actualizar Primera Vez' : 'Guardar Primera Vez' }}
+      </button>
+    </form>
+  </div>
+  
